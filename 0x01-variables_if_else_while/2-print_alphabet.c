@@ -1,28 +1,18 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
-
+#include <unistd.h>
 /**
- * main - Every point
- *
- * Return: Always 0 (Success)
+ * main - Entry point
+ * Description: prints the alphabet in lowercase\n
+ * Return: Always 0 (success)
  */
-
 int main(void)
 {
-	int d;
+	int ch;
 
-	for (d = 0; d < 100; d++)
+	for (ch = 'a'; ch <= 'z'; ch++)
 	{
-		putchar((d / 10) + '0');
-		putchar((d % 10) + '0');
-		if (d != 99)
-		{ 
-			putchar(',');
-			putchar(' ');
-		}
+		putchar(ch);
 	}
 	putchar('\n');
-
-	return (0);
+return (0);
 }

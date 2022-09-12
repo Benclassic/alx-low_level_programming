@@ -1,20 +1,24 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
-
+#include <unistd.h>
 /**
- * main -Entry point
- *
- * Return: Always 0 (Success)
+ * main - Entry point
+ * Description: prints lowercase alphabets
+ * Return: Always 0 (success)
  */
-
 int main(void)
 {
-	int i;
+	int ch;
 
-	for (i = 0; i < 10; i++)
-		printf("%d", i);
-	printf("\n");
-
+	for (ch = 'a'; ch <= 'z'; ch++)
+	{
+		if (ch != 'e' && ch != 'q')
+		{
+			putchar(ch);
+		}
+		else
+		{
+		}
+	}
+	putchar('\n');
 	return (0);
 }
