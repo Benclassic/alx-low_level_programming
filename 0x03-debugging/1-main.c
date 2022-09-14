@@ -19,6 +19,5 @@ i = 0;
  }
  /
  print('Infinite loop avoided! \\o/\n");
-
  return (0)
  }
