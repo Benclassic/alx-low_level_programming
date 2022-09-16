@@ -2,7 +2,7 @@
 /**
  * main - entry point
  *
- * Description: prints FizBuzz
+ * Description: prints FizzBuzz
  *
  * Return: void
  */
@@ -19,12 +19,12 @@ int main(void)
 		else if (n % 3 == 0)
 			printf("Fizz");
 		else
-			print("%i", n);
+			printf("%i", n);
 
 		if (n < 100)
 			printf(" ");
 		else
-			print("\n");
+			printf("\n");
 	}
 	return (0);
 }

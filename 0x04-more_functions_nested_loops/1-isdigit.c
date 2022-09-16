@@ -4,11 +4,11 @@
  * _isdigit - input
  *
  * Description: define if a character is a number
- * @c: character
+ * @c: charater
  * Return: 1 yes 0 no
  */
 
-int isdigit(int c)
+int _isdigit(int c)
 {
 	if (c >= '0' && c <= '9')
 		return (1);

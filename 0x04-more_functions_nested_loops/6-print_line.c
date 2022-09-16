@@ -4,7 +4,7 @@
  * print_line - entry point
  *
  * Description: Prints lines
- * @n: number of lines
+ *@n: number of lines
  * Return: void
  */
 
@@ -18,7 +18,7 @@ void print_line(int n)
 	}
 	else
 	{
-		for (num_lines = 1; num_lines <=n; num_lines++)
+		for (num_lines = 1; num_lines <= n; num_lines++)
 		{
 			_putchar('_');
 		}
