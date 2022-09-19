@@ -1,27 +1,34 @@
-#inculde "main.h"
-/**
- *rev_string - reverse the srting.
- @s: pointer to string.
+*@s: checked
+ *Return: nothing
+ */
+int _strlen(char *s)
+{
 
-Return: void.
-/
+	int i, len;
+
+	len = 0;
+
+	for (i = 0; s[i] != '\0'; ++i)
+	{
+		len++;
+	}
+	return (len);
+}
+
 void rev_string(char *s)
 {
-        int i, j, k, temp;
+	int strsize = _strlen(s);
+	int i;
+
+	char c;
 
 	i = 0;
-	while (s[i] != '\0')
-	{
-	         i++:
-		 }
-		k = 0:
-	        j = i - 1:
 
-		while (k < j)
-		{
-		         temp = s[k];
-			 s[k] = s[j];
-			 s[j] = temp;
-			 k++;
-			 j--;
-	        }
+	while (i < (strsize / 2))
+	{
+		c = *(s + i);
+		*(s + i) = *(s + strsize - 1 - i);
+		*(s + strsize - 1 - i) = c;
+		i++;
+	}
+}
