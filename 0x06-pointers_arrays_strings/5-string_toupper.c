@@ -1,21 +1,25 @@
 #include "main.h"
 
 /**
- * string_toupper - Change all lowercase letter to uppercase
- * @c: string
- * Return: c
+ *string_toupper- converts small letters to cap
+ *@s: checked
+ *Return: s
  */
-
-char *string_toupper(char *c)
+char *string_toupper(char *s)
 {
-	int i;
+	int c = 0;
 
-	for (i = 0; c[i] != '\0'; i++)
+
+	for (c = 0; s[c] != '\0'; c++)
 	{
-		if (c[i] > 96 && c[i] < 123)
+		if (s[c] >= 65 && s[c] <= 90)
 		{
-			c[i] -= 32;
+			s[c] = s[c] + 32;
+		}
+		if (s[c] >= 97 && s[c] <= 122)
+		{
+			s[c] = s[c] - 32;
 		}
 	}
-	return (c);
+	return (s);
 }
