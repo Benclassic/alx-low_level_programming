@@ -1,39 +1,34 @@
 #include "main.h"
 
 /**
- * cap_string - capitalize all words of a string
- * @str: string
- * Return: 'str'
+ * cap_string - capitalizes chars in a string following a separator
+ *
+ * @c: character string pointer
+ * Return: char pointer
  */
-
-char *cap_string(char *str)
+char *cap_string(char *c)
 {
-	int i, c;
-	int trigger;
-	char nots[] ="';.!(){}\n\t\" ";
+	int i = 0, j,
+	sep[] = {32, '\t', 11,  '\n', 44, 59, 46, 33, 63, 34, 40, 41, 123, 125};
 
-	for (i = 0, trigger = 0; str[i] != '\0'; i++)
+	if (c[0] > 96 && c[0] < 123)
+		c[0] -= 32;
+	while (c[i] != '\0')
 	{
-		if (str[0] > 96 && str[0] < 123)
-			trigger = 1;
-		for (c = 0; nots[c] !='\0'; c++)
+		if (c[i] > 96 && c[i] < 123)
 		{
-			if (nots[c] == str[i])
-				trigger = 1;
-		}
-
-		if (trigger)
-		{
-			if (str[i] > 96 && str[i] < 123)
+			j = 0;
+			while (j < 14)
 			{
-				str[i] -= 32;
-				trigger = 0;
+				if (c[i - 1] == sep[j])
+				{
+					c[i] -= 32;
+					break;
+				}
+				j++;
 			}
-			else if (str[i] > 64 && str[i] < 91)
-				trigger = 0;
-			else if (str[i] > 47 && str[i] < 58)
-				trigger = 0;
 		}
+		i++;
 	}
-	return (str);
+	return (c);
 }
