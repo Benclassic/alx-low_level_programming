@@ -1,141 +1,46 @@
-nclude "main.h"
-
+#include "main.h"
 #include <stdio.h>
-
 #include <stdlib.h>
 
-
-
 /**
- *
- *  *_strlen - count arrray
- *
- *   *@s: array of elements
- *
- *    *Return: i
- *
- *     */
+ * argstostr - prints args
+ * @ac: takes in width of grid
+ * @av: height of grid
+ * Return: the args one line at a time
+ */
 
-
-
-int _strlen(char *s)
-
+char *argstostr(int ac, char **av)
 {
+	char *str;
+	int count = 0, a = 0, b = 0, c = 0;
 
-		unsigned int i;
-
-
-
-			i = 0;
-
-				while (s[i] != '\0') /*Count character of string*/
-
-						{
-
-									i++;
-
-										}
-
-
-
-					return (i);
-
-}
-
-
-
-/**
- *
- *  *_strcpy - copy arrays
- *
- *   *@src: array of elements
- *
- *    *@dest: dest array
- *
- *     *Return: dest
- *
- *      */
-
-
-
-char *_strcpy(char *dest, char *src)
-
-{
-
-		int i = 0;
-
-
-
-			while (src[i] != '\0')
-
-					{
-
-								dest[i] = src[i];
-
-										i++;
-
-											}
-
-				dest[i] = '\0';
-
-
-
-					return (dest);
-
-}
-
-
-
-/**
- *
- *  *_strdup - array for prints a string
- *
- *   *@str: array of elements
- *
- *    *Return: pointer
- *
- *     */
-
-
-
-char *_strdup(char *str)
-
-{
-
-		char *dst;
-
-			unsigned int size;
-
-
-
-				if (str == 0)
-
-						{
-
-									return (NULL);
-
-										}
-
-
-
-					size = _strlen(str) + 1;
-
-
-
-						dst = (char *) malloc(size * sizeof(char));
-
-
-
-							if (dst == 0)
-
-									{
-
-												return (NULL);
-
-													}
-
-								_strcpy(dst, str);
-
-									return (dst);
-
+	if (ac == 0 || av == NULL)
+		return (NULL);
+	while (a < ac)
+	{
+		b = 0;
+		while (av[a][b] != '\0')
+		{
+			count++;
+			b++;
+		}
+		a++;
+	}
+	count = count + ac + 1;
+	str = malloc(sizeof(char) * count);
+	if (str == NULL)
+	{
+		return (NULL);
+	}
+	for (a = 0; a < ac; a++)
+	{
+		for (b = 0; av[a][b] != '\0'; b++)
+		{
+			str[c] = av[a][b];
+			c++;
+		}
+		str[c] = '\n';
+		c++;
+	}
+	return (str);
 }
