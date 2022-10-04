@@ -1,141 +1,65 @@
-nclude "main.h"
-
+#include "main.h"
 #include <stdio.h>
-
 #include <stdlib.h>
 
-
-
 /**
- *
- *  *_strlen - count arrray
- *
- *   *@s: array of elements
- *
- *    *Return: i
- *
- *     */
-
-
+ *_strlen - count arrray
+ *@s: array of elements
+ *Return: i
+ */
 
 int _strlen(char *s)
-
 {
+	unsigned int i;
 
-		unsigned int i;
+	i = 0;
+	while (s[i] != '\0') /*Count character of string*/
+	{
+		i++;
+	}
 
-
-
-			i = 0;
-
-				while (s[i] != '\0') /*Count character of string*/
-
-						{
-
-									i++;
-
-										}
-
-
-
-					return (i);
-
+	return (i);
 }
 
-
-
 /**
- *
- *  *_strcpy - copy arrays
- *
- *   *@src: array of elements
- *
- *    *@dest: dest array
- *
- *     *Return: dest
- *
- *      */
+ *str_concat - back a pointer to array
+ *@s1: Array one
+ *@s2: Array two
+ *Return: Always an array dinamic
+ */
 
-
-
-char *_strcpy(char *dest, char *src)
-
+char *str_concat(char *s1, char *s2)
 {
+	char *dst;
+	unsigned int i, j, size;
 
-		int i = 0;
+	/*If the array is empty*/
+	if (s1 == NULL)
+		s1 = "";
 
+	if (s2 == NULL)
+		s2 = "";
 
+	/*count size total*/
+	size = (_strlen(s1) + _strlen(s2) + 1);
 
-			while (src[i] != '\0')
+	/*malloc*/
+	dst = (char *) malloc(size * sizeof(char));
 
-					{
+	if (dst == 0)
+	{
+		return (NULL);
+	}
 
-								dest[i] = src[i];
+	/*Concatenate arrays*/
+	for (i = 0; *(s1 + i) != '\0'; i++)
+		*(dst + i) = *(s1 + i);
 
-										i++;
+	for (j = 0; *(s2 + j) != '\0'; j++)
+	{
+		*(dst + i) = *(s2 + j);
+		i++;
+	}
 
-											}
-
-				dest[i] = '\0';
-
-
-
-					return (dest);
-
-}
-
-
-
-/**
- *
- *  *_strdup - array for prints a string
- *
- *   *@str: array of elements
- *
- *    *Return: pointer
- *
- *     */
-
-
-
-char *_strdup(char *str)
-
-{
-
-		char *dst;
-
-			unsigned int size;
-
-
-
-				if (str == 0)
-
-						{
-
-									return (NULL);
-
-										}
-
-
-
-					size = _strlen(str) + 1;
-
-
-
-						dst = (char *) malloc(size * sizeof(char));
-
-
-
-							if (dst == 0)
-
-									{
-
-												return (NULL);
-
-													}
-
-								_strcpy(dst, str);
-
-									return (dst);
-
+	return (dst);
 }
