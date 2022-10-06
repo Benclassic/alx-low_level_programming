@@ -1,141 +1,76 @@
-nclude "main.h"
-
-#include <stdio.h>
-
 #include <stdlib.h>
-
-
-
+#include "main.h"
 /**
+ * count_word - helper function to count the number of words in a string
+ * @s: string to evaluate
  *
- *  *_strlen - count arrray
- *
- *   *@s: array of elements
- *
- *    *Return: i
- *
- *     */
-
-
-
-int _strlen(char *s)
-
+ * Return: number of words
+ */
+int count_word(char *s)
 {
+	int flag, c, w;
 
-		unsigned int i;
+	flag = 0;
+	w = 0;
 
+	for (c = 0; s[c] != '\0'; c++)
+	{
+		if (s[c] == ' ')
+			flag = 0;
+		else if (flag == 0)
+		{
+			flag = 1;
+			w++;
+		}
+	}
 
-
-			i = 0;
-
-				while (s[i] != '\0') /*Count character of string*/
-
-						{
-
-									i++;
-
-										}
-
-
-
-					return (i);
-
+	return (w);
 }
-
-
-
 /**
+ * **strtow - splits a string into words
+ * @str: string to split
  *
- *  *_strcpy - copy arrays
- *
- *   *@src: array of elements
- *
- *    *@dest: dest array
- *
- *     *Return: dest
- *
- *      */
-
-
-
-char *_strcpy(char *dest, char *src)
-
+ * Return: pointer to an array of strings (Success)
+ * or NULL (Error)
+ */
+char **strtow(char *str)
 {
+	char **matrix, *tmp;
+	int i, k = 0, len = 0, words, c = 0, start, end;
 
-		int i = 0;
+	while (*(str + len))
+		len++;
+	words = count_word(str);
+	if (words == 0)
+		return (NULL);
 
+	matrix = (char **) malloc(sizeof(char *) * (words + 1));
+	if (matrix == NULL)
+		return (NULL);
 
+	for (i = 0; i <= len; i++)
+	{
+		if (str[i] == ' ' || str[i] == '\0')
+		{
+			if (c)
+			{
+				end = i;
+				tmp = (char *) malloc(sizeof(char) * (c + 1));
+				if (tmp == NULL)
+					return (NULL);
+				while (start < end)
+					*tmp++ = str[start++];
+				*tmp = '\0';
+				matrix[k] = tmp - c;
+				k++;
+				c = 0;
+			}
+		}
+		else if (c++ == 0)
+			start = i;
+	}
 
-			while (src[i] != '\0')
+	matrix[k] = NULL;
 
-					{
-
-								dest[i] = src[i];
-
-										i++;
-
-											}
-
-				dest[i] = '\0';
-
-
-
-					return (dest);
-
-}
-
-
-
-/**
- *
- *  *_strdup - array for prints a string
- *
- *   *@str: array of elements
- *
- *    *Return: pointer
- *
- *     */
-
-
-
-char *_strdup(char *str)
-
-{
-
-		char *dst;
-
-			unsigned int size;
-
-
-
-				if (str == 0)
-
-						{
-
-									return (NULL);
-
-										}
-
-
-
-					size = _strlen(str) + 1;
-
-
-
-						dst = (char *) malloc(size * sizeof(char));
-
-
-
-							if (dst == 0)
-
-									{
-
-												return (NULL);
-
-													}
-
-								_strcpy(dst, str);
-
-									return (dst);
-
+	return (matrix);
 }
