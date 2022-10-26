@@ -1,15 +1,17 @@
-nclude "lists.h"
+section .data
 
+message db "Hello, Holberton", 10
 
+section .text
 
-/**
+global main
+main:
+mov rax, 1
+mov rdi, 1
+mov rsi, message
+mov rdx, 17
+syscall
 
- * listint_len - Entry point.
-
- * @h:value.
-
- * Return: Always 0 (Success)
-
- */
-
-size_t listint_l
+mov rax, 60
+mov rdi, 0
+syscall
