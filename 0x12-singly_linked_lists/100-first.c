@@ -1,15 +1,12 @@
-nclude "lists.h"
-
-
+#include "lists.h"
 
 /**
- *
- *  * listint_len - Entry point.
- *
- *   * @h:value.
- *
- *    * Return: Always 0 (Success)
- *
- *     */
+ * print_after_main - before the main function is executed.
+ **/
+void print_after_main(void) __attribute__((constructor));
 
-size_t listint_l
+void print_after_main(void)
+{
+	printf("You're beat! and yet, you must allow,\n");
+	printf("I bore my house upon my back!\n");
+}

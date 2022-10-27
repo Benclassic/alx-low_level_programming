@@ -1,15 +1,19 @@
-nclude "lists.h"
-
-
-
+#include "lists.h"
 /**
- *
- *  * listint_len - Entry point.
- *
- *   * @h:value.
- *
- *    * Return: Always 0 (Success)
- *
- *     */
+ * list_len - Entry point.
+ * @h:value.
+ * Return: Always 0 (Success)
+ */
+size_t list_len(const list_t *h)
+{
+	size_t a;
+	list_t *list;
 
-size_t listint_l
+	list = (list_t *)h;
+
+	for (a = 0; list != NULL; a++)
+	{
+		list = list->next;
+	}
+	return (a);
+}

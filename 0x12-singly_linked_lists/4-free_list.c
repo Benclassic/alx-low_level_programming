@@ -1,15 +1,20 @@
-nclude "lists.h"
-
-
-
+#include "lists.h"
 /**
- *
- *  * listint_len - Entry point.
- *
- *   * @h:value.
- *
- *    * Return: Always 0 (Success)
- *
- *     */
+ * free_list - Entry point
+ * @head: pointer
+ * Return: Always 0 (Success)
+ */
+void free_list(list_t *head)
+{
+	if (!head)
+	{
+		return;
+	}
+	if (head->next)
+	{
+		free_list(head->next);
+	}
 
-size_t listint_l
+	free(head->str);
+	free(head);
+}
